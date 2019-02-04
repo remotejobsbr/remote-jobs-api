@@ -3,11 +3,13 @@
 const serverless = require('serverless-http');
 const express = require('express');
 const bodyParser = require("body-parser");
+var cors = require("cors");
 
 const githubAPI = require('./utils/githubAPI')
 
 const app = express();
 
+app.use(cors());
 app.use(bodyParser.json({ strict: false }));
 
 /*
