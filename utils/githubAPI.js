@@ -81,7 +81,10 @@ const fetchJob = (repositoryName, issueNumber) => {
       repoNameByOwner[repositoryName]
       }/issues/${issueNumber}`
     )
-    .then(res => res.data)
+    .then(res =>( {
+      ...res.data,
+      service_name: repositoryName
+    }))
 }
 
 const rateLimit = () => {
