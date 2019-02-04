@@ -41,13 +41,18 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Install Serverless CLI and dependencies
+          command: |
+            sudo npm i -g serverless
+            npm install
+      - run:
           name: Prepare AWS Serverless
           command: |
-            npm run aws:config
+            sls config credentials --provider aws --key $AWS_KEY --secret $AWS_SECRET
       - run:
           name: Deploying
           command: |
-            npm run deploy
+            sls deploy -v --githubkey $GITHUB_KEY
 workflows:
   version: 2
   build-deploy:
