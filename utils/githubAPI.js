@@ -1,7 +1,7 @@
 const { flatten, sort } = require('ramda')
 const axios = require('axios')
 
-const githubAPIKey = process.env.GITHUB_API_KEY;
+const githubAPIKey = process.env.GITHUB_KEY;
 
 const instance = axios.create({
   baseURL: `https://api.github.com`,
