@@ -1,0 +1,25 @@
+{
+  "name": "remote-jobs-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "aws:config": "serverless config credentials --provider aws --key $AWS_KEY --secret $AWS_SECRET",
+    "deploy": "serverless deploy -v --githubkey $GITHUB_KEY"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.395.0",
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "ramda": "^0.26.1",
+    "serverless-http": "^1.9.0"
+  },
+  "devDependencies": {
+    "serverless-offline": "^4.2.1"
+  }
+}

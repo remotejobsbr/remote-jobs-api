@@ -1,0 +1,21 @@
+# serverless.yml
+
+service: remote-jobs-api
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  stage: dev
+  region: us-east-1
+  environment:
+    GITHUB_KEY: ${opt:githubkey}
+
+functions:
+  app:
+    handler: index.handler
+    events:
+      - http: ANY /
+      - http: 'ANY {proxy+}'
+
+plugins:
+  - serverless-offline
