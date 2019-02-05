@@ -26,19 +26,29 @@ app.get('/github/rate_limit', (req, res) => {
 
 // Get all jobs from a category
 app.get('/github/jobs/:category', (req, res) => {
-  return githubAPI.fetchJobsByCategory(req.params.category)
+  return githubAPI
+    .fetchJobsByCategory(req.params.category)
     .then(res.json.bind(res))
+    .catch(error =>
+      res.status(404).json({
+        error: error.message
+      })
+    );
 })
 
-// Get a jobs from a repository
+// Get a job from a repository
 app.get('/github/jobs/repository/:repository/:jobId', (req, res) => {
   const {
     repository,
     jobId,
   } = req.params
 
-  return githubAPI.fetchJob(repository, jobId)
+  return githubAPI
+    .fetchJob(repository, jobId)
     .then(res.json.bind(res))
+    .catch((error) => res.status(404).json({
+      error: error.message,
+    }))
 })
 
 module.exports.handler = serverless(app);

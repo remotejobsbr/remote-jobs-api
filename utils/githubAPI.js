@@ -13,7 +13,7 @@ if (githubAPIKey && githubAPIKey !== 'undefined')
 // Endpoints
 const jobEndpoints = {
   frontendbr: '/repos/frontendbr/vagas/issues?labels=Remoto&state=open',
-  reactbrasil:
+  ['react-brasil']:
     '/repos/react-brasil/vagas/issues?labels=aloca%C3%A7%C3%A3o/Remoto&state=open',
   backendbr: '/repos/backend-br/vagas/issues?labels=Remoto&state=open',
   soujava: '/repos/soujava/vagas-java/issues?labels=Remoto&state=open',
@@ -26,7 +26,7 @@ const jobEndpoints = {
 
 const repoNameByOwner = {
   frontendbr: 'vagas',
-  reactbrasil: 'vagas',
+  ['react-brasil']: 'vagas',
   backendbr: 'vagas',
   soujava: 'vagas-java',
   androiddevbr: 'vagas',
@@ -35,7 +35,7 @@ const repoNameByOwner = {
 }
 
 const serviceNamesByCategory = {
-  frontend: ['frontendbr', 'reactbrasil'],
+  frontend: ['frontendbr', 'react-brasil'],
   backend: ['backendbr', 'soujava', 'phpdevbrasil'],
   mobile: ['androiddevbr', 'cocoaheadsbrasil']
 }
@@ -71,17 +71,13 @@ const fetchJobsByCategory = category => {
 }
 
 const fetchJob = (repositoryName, issueNumber) => {
-  console.log(`/repos/${repositoryName}/${
-    repoNameByOwner[repositoryName]
-    }/issues/${issueNumber}`)
-
   return instance
     .get(
       `/repos/${repositoryName}/${
       repoNameByOwner[repositoryName]
       }/issues/${issueNumber}`
     )
-    .then(res =>( {
+    .then(res => ({
       ...res.data,
       service_name: repositoryName
     }))
