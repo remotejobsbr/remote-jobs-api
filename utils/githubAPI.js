@@ -7,7 +7,7 @@ const instance = axios.create({
   baseURL: `https://api.github.com`,
 })
 
-if (githubAPIKey)
+if (githubAPIKey && githubAPIKey !== 'undefined')
   instance.defaults.headers.common['Authorization'] = `token ${githubAPIKey}`;
 
 // Endpoints

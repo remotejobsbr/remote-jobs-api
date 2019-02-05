@@ -1,9 +1,7 @@
-// index.js
-
 const serverless = require('serverless-http');
 const express = require('express');
-const bodyParser = require("body-parser");
-var cors = require("cors");
+const bodyParser = require('body-parser');
+var cors = require('cors');
 
 const githubAPI = require('./utils/githubAPI')
 
