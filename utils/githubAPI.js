@@ -71,15 +71,23 @@ const fetchJobsByCategory = category => {
 }
 
 const fetchJob = (repositoryName, issueNumber) => {
+  /**
+   * Workaround to works with the old url in production
+   * @TODO: Remove this logic 10 july 2019
+   */
+  const safeRepositoryName = repositoryName === 'reactbrasil'
+    ? 'react-brasil'
+    : repositoryName;
+
   return instance
     .get(
-      `/repos/${repositoryName}/${
-      repoNameByOwner[repositoryName]
+      `/repos/${safeRepositoryName}/${
+      repoNameByOwner[safeRepositoryName]
       }/issues/${issueNumber}`
     )
     .then(res => ({
       ...res.data,
-      service_name: repositoryName
+      service_name: safeRepositoryName
     }))
 }
 
