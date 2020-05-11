@@ -14,7 +14,7 @@ if (githubAPIKey && githubAPIKey !== 'undefined')
 const jobEndpoints = {
   frontendbr: '/repos/frontendbr/vagas/issues?labels=Remoto&state=open',
   ['react-brasil']:
-    '/repos/react-brasil/vagas/issues?labels=🏢+Remoto&state=open',
+    '/repos/react-brasil/vagas/issues?labels=%F0%9F%8F%A2%20Remoto&state=open',
   backendbr: '/repos/backend-br/vagas/issues?labels=Remoto&state=open',
   soujava: '/repos/soujava/vagas-java/issues?labels=Remoto&state=open',
   androiddevbr: '/repos/androiddevbr/vagas/issues?labels=Remoto&state=open',
@@ -35,7 +35,7 @@ const repoNameByOwner = {
 }
 
 const serviceNamesByCategory = {
-  frontend: ['frontendbr'],
+  frontend: ['frontendbr', 'react-brasil'],
   backend: ['backendbr', 'soujava', 'phpdevbrasil'],
   mobile: ['androiddevbr', 'cocoaheadsbrasil']
 }
