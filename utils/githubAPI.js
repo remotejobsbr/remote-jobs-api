@@ -35,7 +35,7 @@ const repoNameByOwner = {
 }
 
 const serviceNamesByCategory = {
-  frontend: ['frontendbr', 'react-brasil'],
+  frontend: ['frontendbr'],
   backend: ['backendbr', 'soujava', 'phpdevbrasil'],
   mobile: ['androiddevbr', 'cocoaheadsbrasil']
 }
