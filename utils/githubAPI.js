@@ -14,7 +14,7 @@ if (githubAPIKey && githubAPIKey !== 'undefined')
 const jobEndpoints = {
   frontendbr: '/repos/frontendbr/vagas/issues?labels=Remoto&state=open',
   ['react-brasil']:
-    '/repos/react-brasil/vagas/issues?labels=aloca%C3%A7%C3%A3o/Remoto&state=open',
+    '/repos/react-brasil/vagas/issues?labels=🏢+Remoto&state=open',
   backendbr: '/repos/backend-br/vagas/issues?labels=Remoto&state=open',
   soujava: '/repos/soujava/vagas-java/issues?labels=Remoto&state=open',
   androiddevbr: '/repos/androiddevbr/vagas/issues?labels=Remoto&state=open',
