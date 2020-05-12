@@ -21,7 +21,12 @@ const jobEndpoints = {
   cocoaheadsbrasil:
     '/repos/CocoaHeadsBrasil/vagas/issues?labels=Remoto&state=open',
   phpdevbrasil:
-    '/repos/phpdevbr/vagas/issues?labels=aloca%C3%A7%C3%A3o/Remoto&state=open'
+    '/repos/phpdevbr/vagas/issues?labels=aloca%C3%A7%C3%A3o/Remoto&state=open',
+  ['vuejs-br']: '/repos/vuejs-br/vagas/issues?q=is%3Aopen+is%3Aissue+label%3ARemoto',
+  ['qa-brasil']: '/repos/qa-brasil/vagas/issues?q=is%3Aopen+is%3Aissue+label%3ARemoto',
+  uxbrasil: '/repos/uxbrasil/vagas/issues?q=is%3Aopen+is%3Aissue+label%3ARemoto',
+  Gommunity: '/repos/Gommunity/vagas/issues?q=is%3Aopen+is%3Aissue+label%3ARemoto',
+  ['flutter-brazil']: '/repos/flutter-brazil/vagas/issues?q=is%3Aopen+is%3Aissue+label%3ARemoto',
 }
 
 const repoNameByOwner = {
@@ -31,13 +36,20 @@ const repoNameByOwner = {
   soujava: 'vagas-java',
   androiddevbr: 'vagas',
   cocoaheadsbrasil: 'vagas',
-  phpdevbrasil: 'vagas'
+  phpdevbrasil: 'vagas',
+  ['vuejs-br']: 'vagas',
+  ['qa-brasil']: 'vagas',
+  uxbrasil: 'vagas',
+  Gommunity: 'vagas',
+  ['flutter-brazil']: 'vagas',
 }
 
 const serviceNamesByCategory = {
-  frontend: ['frontendbr', 'react-brasil'],
-  backend: ['backendbr', 'soujava', 'phpdevbrasil'],
-  mobile: ['androiddevbr', 'cocoaheadsbrasil']
+  frontend: ['frontendbr', 'react-brasil', 'vuejs-br'],
+  backend: ['backendbr', 'soujava', 'phpdevbrasil', 'Gommunity'],
+  mobile: ['androiddevbr', 'cocoaheadsbrasil', 'flutter-brazil'],
+  qa: ['qa-brasil'],
+  ux: ['uxbrasil']
 }
 
 const fetchJobs = jobServiceName => {
