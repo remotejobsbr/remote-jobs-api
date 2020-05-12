@@ -27,6 +27,7 @@ const jobEndpoints = {
   uxbrasil: '/repos/uxbrasil/vagas/issues?q=is%3Aopen+is%3Aissue+label%3ARemoto',
   Gommunity: '/repos/Gommunity/vagas/issues?q=is%3Aopen+is%3Aissue+label%3ARemoto',
   ['flutter-brazil']: '/repos/flutter-brazil/vagas/issues?q=is%3Aopen+is%3Aissue+label%3ARemoto',
+  ['trabalho-remoto-vagas']: '/repos/remotejobsbr/trabalho-remoto-vagas/issues',
 }
 
 const repoNameByOwner = {
@@ -42,6 +43,7 @@ const repoNameByOwner = {
   uxbrasil: 'vagas',
   Gommunity: 'vagas',
   ['flutter-brazil']: 'vagas',
+  ['trabalho-remoto-vagas']: 'trabalho-remoto-vagas',
 }
 
 const serviceNamesByCategory = {
@@ -49,7 +51,8 @@ const serviceNamesByCategory = {
   backend: ['backendbr', 'soujava', 'phpdevbrasil', 'Gommunity'],
   mobile: ['androiddevbr', 'cocoaheadsbrasil', 'flutter-brazil'],
   qa: ['qa-brasil'],
-  ux: ['uxbrasil']
+  ux: ['uxbrasil'],
+  geral: ['trabalho-remoto-vagas']
 }
 
 const fetchJobs = jobServiceName => {
@@ -83,23 +86,20 @@ const fetchJobsByCategory = category => {
 }
 
 const fetchJob = (repositoryName, issueNumber) => {
-  /**
-   * Workaround to works with the old url in production
-   * @TODO: Remove this logic 10 july 2019
-   */
-  const safeRepositoryName = repositoryName === 'reactbrasil'
-    ? 'react-brasil'
-    : repositoryName;
+  const safeOwnerName = ({
+    reactbrasil: 'react-brasil',
+    ['trabalho-remoto-vagas']: 'remotejobsbr'
+  })[repositoryName] || repositoryName
 
   return instance
     .get(
-      `/repos/${safeRepositoryName}/${
-      repoNameByOwner[safeRepositoryName]
+      `/repos/${safeOwnerName}/${
+      repoNameByOwner[repositoryName]
       }/issues/${issueNumber}`
     )
     .then(res => ({
       ...res.data,
-      service_name: safeRepositoryName
+      service_name: repositoryName
     }))
 }
 

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "sls offline"
+    "dev": "sls offline --port 3001"
   },
   "keywords": [],
   "author": "",
