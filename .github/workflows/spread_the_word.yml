@@ -1,5 +1,6 @@
-schedule:
-  - cron:  '*/30 * * * *'
+on:
+  schedule:
+    - cron:  '*/30 * * * *'
 jobs:
   curl:
     runs-on: ubuntu-latest
