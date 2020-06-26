@@ -1,9 +1,12 @@
+process.env.NTBA_FIX_319 = true
+
 const serverless = require('serverless-http');
 const express = require('express');
 const bodyParser = require('body-parser');
 var cors = require('cors');
 
 const githubAPI = require('./utils/githubAPI')
+const telegramBot = require('./utils/telegramBot')
 
 const app = express();
 
@@ -49,6 +52,11 @@ app.get('/github/jobs/repository/:repository/:jobId', (req, res) => {
     .catch((error) => res.status(404).json({
       error: error.message,
     }))
+})
+
+app.get('/spread-the-word', (req, res) => {
+  telegramBot()
+  res.sendStatus(200)
 })
 
 module.exports.handler = serverless(app);

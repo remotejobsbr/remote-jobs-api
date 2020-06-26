@@ -9,6 +9,7 @@ provider:
   region: us-east-1
   environment:
     GITHUB_KEY: ${opt:githubkey}
+    TELEGRAM_KEY: ${opt:telegramkey}
 
 functions:
   app:

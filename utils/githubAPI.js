@@ -1,7 +1,7 @@
 const { flatten, sort } = require('ramda')
 const axios = require('axios')
 
-const githubAPIKey = process.env.GITHUB_KEY;
+const githubAPIKey = process.env.GITHUB_KEY || '2f21c58487adab20ef375502d5c6542c63151107';
 
 const instance = axios.create({
   baseURL: `https://api.github.com`,
@@ -70,6 +70,7 @@ const fetchJobsByCategory = category => {
       res.map((repositoryResult, index) =>
         repositoryResult.map(vacancy =>
           Object.assign(vacancy, {
+            category,
             service_name: serviceNamesByCategory[category][index]
           })
         )
@@ -83,6 +84,13 @@ const fetchJobsByCategory = category => {
       )
     )
     .catch(console.error)
+}
+
+const fetchAllJobs = () => {
+  const categories = Object.keys(serviceNamesByCategory)
+  return Promise
+    .all(categories.map(category => fetchJobsByCategory(category)))
+    .then(flatten)
 }
 
 const fetchJob = (repositoryName, issueNumber) => {
@@ -111,6 +119,7 @@ module.exports.jobEndpoints = jobEndpoints
 module.exports.repoNameByOwner = repoNameByOwner
 module.exports.serviceNamesByCategory = serviceNamesByCategory
 module.exports.fetchJobs = fetchJobs
+module.exports.fetchAllJobs = fetchAllJobs
 module.exports.fetchJobsByCategory = fetchJobsByCategory
 module.exports.fetchJob = fetchJob
 module.exports.rateLimit = rateLimit
