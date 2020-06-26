@@ -1,0 +1,10 @@
+schedule:
+  - cron:  '*/30 * * * *'
+jobs:
+  curl:
+    runs-on: ubuntu-latest
+    steps:
+    - name: curl
+      uses: wei/curl@v1
+      with:
+        args: https://gcq2gnybeb.execute-api.us-east-1.amazonaws.com/dev/spread-the-word
