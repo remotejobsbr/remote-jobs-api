@@ -17,7 +17,7 @@
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "express": "^4.16.4",
-    "moment": "^2.27.0",
+    "moment": "^2.29.4",
     "node-telegram-bot-api": "^0.50.0",
     "ramda": "^0.26.1",
     "serverless-http": "^1.9.0"
